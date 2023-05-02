@@ -1,7 +1,10 @@
 $(document).ready(readyNow);
 
+let isWhite = true;
+
 function readyNow(){
-  $("button").on('click' )
+  $("button").on('click' , buttonClick)
+  setInterval(buttonFlash, 750);
 }
 
 // array of employee objects
@@ -66,7 +69,7 @@ If their employee number is 4 digits long, this means they have been with the co
 However, if their annual income is greater than $65,000, they should have their bonus adjusted down 1%.
 No bonus can be above 13% or below 0% total.
 */
-  const maxBonusPercent = 1.13;
+  const maxBonusPercent = 1.130000001;
   let bonusPercent = 1.0;
 
   // Check ratings
@@ -111,6 +114,49 @@ The totalBonus should be the employee's total bonus rounded to the nearest dolla
 */
 
 console.log("Testing that the function actually works correctly.");
-for ( employee of employees ) { // TODO: add `let` here
+for ( employee of employees ) { // TODO: Can add `let` here
   console.log(calculateIndividualEmployeeBonus(employee));
+}
+
+
+function drawRaiseList (raiseArray) {
+  let list = $( "#payed"); // TODO: remove extraneous space
+  list.empty();
+
+  for ( let raise of raiseArray ) {
+    list.append(`<li>${raise.name} - Percent bonus: ${Math.floor((raise.bonusPercentage - 1) * 100)}%. Total compensation: $${raise.totalCompensation}. Total bonus: $${raise.totalBonus}</li>`);
+  }
+}
+
+
+function buttonClick () {
+  // TODO : Add function to create list of raises.
+  raises = raisinLoop(employees); // TODO: Add const here
+  
+  drawRaiseList(raises);
+}
+
+
+function raisinLoop (employeesToBePayedVeryMuch) {
+  const returnList = [];
+  for (let employee of employeesToBePayedVeryMuch){
+    returnList.push(calculateIndividualEmployeeBonus(employee))
+    console.log(returnList[returnList.length-1]);
+  }
+  return returnList;
+}
+
+
+function buttonFlash () {
+  button = $('button'); // TODO: missing `const`
+
+  // TODO: instead of a global variable, check out
+  // the `.toggleClass()` function in jQuery.
+  if ( isWhite ) {
+    button.css("color", "yellow");
+    isWhite = false;
+  } else {
+    button.css("color", 'white');
+    isWhite = true;
+  }
 }

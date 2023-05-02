@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Comic Sans";
+    src: url("fonts/'Comic Sans MS.ttf'");
+}
+
+body {
+    background-color: green;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+header {
+    color: gold;
+    text-align: center;
+    text-shadow: -1px -1px black, 1px 0 10px lime;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    margin-top: 100px;
+    color: gold;
+
+}
+
+#payed {
+    text-align: center;
+    font-size: 36px;
+    font-style: italic;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    list-style-type: disc;
+}
+
+button {
+    background-color: red;
+    font-size: 50px;
+    border-color: red;
+    box-shadow: -15px 15px 10px black;
+    color: white;
+    border-radius: 15px;
+    padding: 1em;
+    font-style: italic;
+    font-family: "Comic Sans";
+}
